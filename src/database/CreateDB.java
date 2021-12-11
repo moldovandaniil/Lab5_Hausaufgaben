@@ -4,12 +4,22 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Class for creating and editibing tables and databases
+ */
 public class CreateDB {
+
+    /*
+    String variables for database urls and other credentials in order to access MySql
+     */
     static final String DB_URL = "jdbc:mysql://localhost:3306";
     static final String DB_URL_Final = "jdbc:mysql://localhost:3306/HAUSAUFGABEN";
     static final String USER = "root";
     static final String PASS = "root";
 
+    /**
+     * Creates the database Hausaufgaben using DriverManager and Sql connector
+     */
     public void createDB(){
         try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = conn.createStatement();
@@ -23,6 +33,9 @@ public class CreateDB {
 
     }
 
+    /**
+     * Drops the database Hausaufgaben using DriverManager and Sql connector
+     */
     public void dropAll(){
         try(Connection conn = DriverManager.getConnection(DB_URL_Final, USER, PASS);
             Statement stmt = conn.createStatement();
@@ -35,6 +48,9 @@ public class CreateDB {
         }
     }
 
+    /**
+     * Creates the table Course using DriverManager and Sql connector
+     */
     public void createTableCourse(){
         try(Connection conn = DriverManager.getConnection(DB_URL_Final, USER, PASS);
             Statement stmt = conn.createStatement();
@@ -55,6 +71,9 @@ public class CreateDB {
         }
     }
 
+    /**
+     * Creates the table Student using DriverManager and Sql connector
+     */
     public void createTableStudent(){
         try(Connection conn = DriverManager.getConnection(DB_URL_Final, USER, PASS);
             Statement stmt = conn.createStatement();
@@ -74,6 +93,9 @@ public class CreateDB {
         }
     }
 
+    /**
+     * Creates the table Teacher using DriverManager and Sql connector
+     */
     public void createTableTeacher(){
         try(Connection conn = DriverManager.getConnection(DB_URL_Final, USER, PASS);
             Statement stmt = conn.createStatement();
@@ -93,7 +115,9 @@ public class CreateDB {
         }
     }
 
-
+    /**
+     * Adds a foreign key for Students DriverManager and Sql connector
+     */
     public void addFKStudentCourses(){
         try(Connection conn = DriverManager.getConnection(DB_URL_Final, USER, PASS);
             Statement stmt = conn.createStatement();
@@ -107,6 +131,9 @@ public class CreateDB {
         }
     }
 
+    /**
+     * Adds a foreign key for Course DriverManager and Sql connector
+     */
     public void addFKCourseEnrolledStudents(){
         try(Connection conn = DriverManager.getConnection(DB_URL_Final, USER, PASS);
             Statement stmt = conn.createStatement();
